@@ -5,6 +5,7 @@
       left-text="返回"
       left-arrow
       @click-left="() => $router.back()"
+      class="navbar-modern"
     />
     <van-list>
       <van-cell>
@@ -49,23 +50,13 @@
       </van-cell>
     </van-list>
 
-    <div class="notice" v-if="taskId != 0">
-      <van-icon name="bullhorn-o" />
-      <p>{{ process.title }}</p>
-      <span class="pass">{{ process.status === 1 ? '审批中' : process.status === 2 ? '审批通过' : '审批拒绝' }}</span>
-    </div>
-
     <div class="footer" v-if="isApprove">
-      <div class="left-action">
-        <div class="action back" @click="() => $router.back()">
-          <van-icon name="revoke" />
-          <span>返回</span>
-        </div>
+      <div class="actions">
+        <van-button round block @click="() => $router.back()" type="default">返回</van-button>
       </div>
-      <div class="right-button">
-        <van-button @click="approve(-1)" type="default" size="small">审批拒绝</van-button>
-        <span style="margin: 0 4px"></span>
-        <van-button @click="approve(1)" type="info" size="small">审批通过</van-button>
+      <div class="buttons">
+        <van-button round block @click="approve(-1)" type="danger">拒绝</van-button>
+        <van-button round block @click="approve(1)" type="primary">通过</van-button>
       </div>
     </div>
   </div>
@@ -73,7 +64,7 @@
 
 <script>
 import SealAvatar from '../components/Seal.vue';
-import api from '@/api/process'
+import api from '@/api/test'
 export default {
   name: "process",
 
@@ -117,7 +108,7 @@ export default {
         status: status
       }
       api.approve(approvalVo).then(response => {
-        this.$router.push({ path: '/list/1' })
+        this.$router.push({ path: '/list/' })
       })
     }
   }
@@ -126,6 +117,35 @@ export default {
 
 <style lang="scss" scoped>
 .container {
+  .navbar-modern {
+    background-color: #222;
+    color: white;
+    // 可以根据需要调整导航栏的具体样式
+  }
+
+  .actions, .buttons {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+  }
+
+  .actions {
+    button {
+      width: 48%; /* 适应两个按钮的宽度 */
+    }
+  }
+
+  .buttons {
+    button {
+      width: 48%;
+      border-radius: 50px; /* 圆角按钮 */
+      transition: all 0.3s ease; /* 添加过渡效果 */
+    }
+    button:hover {
+      opacity: 0.8; /* 鼠标悬停时的效果 */
+    }
+  }
+
   padding-bottom: 86px;
   .header-warp {
     position: relative;

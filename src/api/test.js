@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-const api_name = '/admin/process'
+const api_name = '/admin/test'
 
 export default {
 

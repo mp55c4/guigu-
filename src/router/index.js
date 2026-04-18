@@ -5,7 +5,7 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: '/',
-    name: 'OA审批',
+    name: 'TESTOA审批',
     component: () =>
       import('../views/index.vue'),
   },
@@ -16,14 +16,14 @@ const routes = [
       import('../views/apply.vue'),
   },
   {
-    path: '/list/:activeIndex',
-    name: '审批列表',
+    path: '/list',
+    name: '流程列表',
     component: () =>
       import('../views/list.vue'),
   },
   {
     path: '/show/:id/:taskId',
-    name: '审批详情',
+    name: '流程详情',
     component: () =>
       import('../views/show.vue'),
   },
@@ -33,12 +33,7 @@ const routes = [
     component: () =>
       import('../views/user.vue'),
   },
-  {
-    path: '/about',
-    name: '关于我们',
-    component: () =>
-      import('../views/about.vue'),
-  },
+  
   {
     path: '/test',
     name: '测试',

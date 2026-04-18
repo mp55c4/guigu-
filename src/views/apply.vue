@@ -1,7 +1,7 @@
 <template>
   <div>
     <van-nav-bar
-      title="发起审批"
+      title="发起提测"
       left-text="返回"
       left-arrow
       @click-left="() => $router.back()"
@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import api from "@/api/process";
+import api from "@/api/test";
 
 export default {
   name: "process",
@@ -70,7 +70,7 @@ export default {
       console.log(processFormVo)
       api.startUp(processFormVo).then(response => {
         //调整到已发起列表
-        this.$router.push({ path: "/list/2" });
+        this.$router.push({ path: "/list/" });
       });
     }
   }
